@@ -1,5 +1,6 @@
 import { appState } from "./app-state";
 import { usernameElms } from "./dom-elements";
+import { alertHandle } from "./alerts-handler";
 
 usernameElms.usernameValueElm.textContent = appState.username;
 
@@ -30,7 +31,7 @@ usernameElms.usernameFormElm.addEventListener("submit", (e) => {
 
     const username = usernameElms.usernameInputElm.value;
     if (username.trim().length === 0) {
-        alert("Необходимо ввести имя пользователя.");
+        alertHandle("Необходимо ввести имя пользователя.");
         return;
     }
 

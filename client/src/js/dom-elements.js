@@ -24,3 +24,8 @@ export const dialogElms = {
     dialogInputElm: document.querySelector("[data-dialog-input]"),
     dialogSubmitElm: document.querySelector("[data-dialog-submit]"),
 };
+
+// Alert DOM Elements
+export const alertElms = {
+    alertBlocknElm: document.querySelector("[data-alert-block]"),
+};

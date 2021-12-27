@@ -47,3 +47,12 @@ export const createUserMessageHTML = (username, message, avatarUrl = null) => {
         </div>
     `;
 };
+
+export const createAlertHTML = (id, message) => `
+    <div class="alert__item" id="${id}">
+        <svg class="alert__item-icon">
+            <use href="/icons/icon-sprite.svg#alert-error" />
+        </svg>
+        <span>${message}</span>
+    </div>
+`;

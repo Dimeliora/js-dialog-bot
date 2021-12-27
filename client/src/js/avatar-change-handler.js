@@ -1,17 +1,18 @@
-import { appState } from './app-state';
-import { avatarElms } from './dom-elements';
+import { appState } from "./app-state";
+import { avatarElms } from "./dom-elements";
+import { alertHandle } from "./alerts-handler";
 
 const PROPER_AVATAR_FILE_TYPES = {
-    'image/jpeg': true,
-    'image/webp': true,
-    'image/png': true,
+    "image/jpeg": true,
+    "image/webp": true,
+    "image/png": true,
 };
 
-avatarElms.userAvatarBtnElm.addEventListener('click', () => {
+avatarElms.userAvatarBtnElm.addEventListener("click", () => {
     avatarElms.userAvatarFileElm.click();
 });
 
-avatarElms.userAvatarFileElm.addEventListener('change', (e) => {
+avatarElms.userAvatarFileElm.addEventListener("change", (e) => {
     const [file] = e.target.files;
 
     if (!file) {
@@ -19,8 +20,8 @@ avatarElms.userAvatarFileElm.addEventListener('change', (e) => {
     }
 
     if (!PROPER_AVATAR_FILE_TYPES[file.type]) {
-        alert(
-            'Пожалуйста, выберите файл изображения в формате JPG, PNG или WEBP.'
+        alertHandle(
+            "Пожалуйста, выберите файл изображения в формате JPG, PNG или WEBP."
         );
         return;
     }

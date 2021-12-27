@@ -5,6 +5,7 @@ import {
     createBotMessageTextHTML,
     createUserMessageHTML,
 } from "./template-creators";
+import { alertHandle } from "./alerts-handler";
 
 const WS_URL = "ws://localhost:3000";
 
@@ -22,11 +23,11 @@ dialogElms.dialogStartBtnElm.addEventListener("click", () => {
     };
 
     ws.onerror = () => {
-        alert("Произошла ошибка соединения. Попробуйте ещё раз позже.");
+        alertHandle("Произошла ошибка соединения. Попробуйте ещё раз позже.");
     };
 
     ws.onclose = () => {
-        alert("Соединение было разорвано. Попробуйте ещё раз позже.");
+        alertHandle("Соединение было разорвано. Попробуйте ещё раз позже.");
     };
 
     ws.onmessage = (e) => {
@@ -65,7 +66,7 @@ dialogElms.dialogStartBtnElm.addEventListener("click", () => {
 
         const messageText = dialogElms.dialogInputElm.value;
         if (messageText.trim().length === 0) {
-            alert("Сообщение не может быть пустым.");
+            alertHandle("Сообщение не может быть пустым.");
             return;
         }
 
