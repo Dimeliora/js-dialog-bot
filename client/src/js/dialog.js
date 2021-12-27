@@ -1,5 +1,9 @@
 import { appState } from "./app-state";
 import { dialogElms } from "./dom-elements";
+import {
+    createBotMessageHTML,
+    createBotMessageTextHTML,
+} from "./template-creators";
 
 const WS_URL = "ws://localhost:3000";
 
@@ -32,5 +36,22 @@ dialogElms.dialogStartBtnElm.addEventListener("click", () => {
 
             appState.isDialogStarted = true;
         }
+
+        if (isPending) {
+            const botMessageTemplate = createBotMessageHTML();
+            dialogElms.dialogDialogElm.insertAdjacentHTML(
+                "beforeend",
+                botMessageTemplate
+            );
+            dialogElms.dialogDialogElm.scrollTop =
+                dialogElms.dialogDialogElm.scrollHeight;
+            return;
+        }
+
+        const botMessageContent =
+            dialogElms.dialogDialogElm.lastElementChild.querySelector(
+                "[data-message-content]"
+            );
+        botMessageContent.innerHTML = createBotMessageTextHTML(message);
     };
 });

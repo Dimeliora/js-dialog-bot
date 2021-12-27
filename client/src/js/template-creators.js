@@ -2,7 +2,7 @@ export const createBotMessageTextHTML = (message) =>
     `<pre class="message__text">${message}</pre>`;
 
 export const createBotMessageHTML = () => `
-    <div class="chat__message message">
+    <div class="dialog__message message">
         <div class="message__user">
             <div class="message__avatar">
                 <img

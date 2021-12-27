@@ -1,0 +1,36 @@
+.preloader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 65px;
+    padding: 5px;
+
+    &__block {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: $purple;
+
+        &:nth-child(1) {
+            animation: blink 2s ease-out infinite;
+        }
+
+        &:nth-child(2) {
+            animation: blink 2s ease-out 0.3s infinite;
+        }
+
+        &:nth-child(3) {
+            animation: blink 2s ease-out 0.8s infinite;
+        }
+    }
+}
+
+@keyframes blink {
+    0% {
+        background-color: $gray;
+    }
+
+    50% {
+        background-color: $purple;
+    }
+}
