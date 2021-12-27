@@ -8,6 +8,8 @@ import {
 
 const WS_URL = "ws://localhost:3000";
 
+dialogElms.dialogSubmitElm.disabled = true;
+
 dialogElms.dialogStartBtnElm.addEventListener("click", () => {
     const { username, userAvatarImageUrl } = appState;
 
@@ -54,6 +56,8 @@ dialogElms.dialogStartBtnElm.addEventListener("click", () => {
                 "[data-message-content]"
             );
         botMessageContent.innerHTML = createBotMessageTextHTML(message);
+
+        dialogElms.dialogSubmitElm.disabled = false;
     };
 
     dialogElms.dialogFormElm.addEventListener("submit", (e) => {
@@ -81,5 +85,7 @@ dialogElms.dialogStartBtnElm.addEventListener("click", () => {
 
         dialogElms.dialogInputElm.value = "";
         dialogElms.dialogInputElm.focus();
+
+        dialogElms.dialogSubmitElm.disabled = true;
     });
 });
