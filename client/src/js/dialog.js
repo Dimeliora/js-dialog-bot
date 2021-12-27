@@ -3,12 +3,13 @@ import { dialogElms } from "./dom-elements";
 import {
     createBotMessageHTML,
     createBotMessageTextHTML,
+    createUserMessageHTML,
 } from "./template-creators";
 
 const WS_URL = "ws://localhost:3000";
 
 dialogElms.dialogStartBtnElm.addEventListener("click", () => {
-    const { username } = appState;
+    const { username, userAvatarImageUrl } = appState;
 
     dialogElms.greetingBlockElm.classList.add("greeting--hidden");
 
@@ -54,4 +55,31 @@ dialogElms.dialogStartBtnElm.addEventListener("click", () => {
             );
         botMessageContent.innerHTML = createBotMessageTextHTML(message);
     };
+
+    dialogElms.dialogFormElm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const messageText = dialogElms.dialogInputElm.value;
+        if (messageText.trim().length === 0) {
+            alert("Сообщение не может быть пустым.");
+            return;
+        }
+
+        const userMessageTemplate = createUserMessageHTML(
+            username,
+            messageText,
+            userAvatarImageUrl
+        );
+        dialogElms.dialogDialogElm.insertAdjacentHTML(
+            "beforeend",
+            userMessageTemplate
+        );
+        dialogElms.dialogDialogElm.scrollTop =
+            dialogElms.dialogDialogElm.scrollHeight;
+
+        ws.send(JSON.stringify({ message: messageText }));
+
+        dialogElms.dialogInputElm.value = "";
+        dialogElms.dialogInputElm.focus();
+    });
 });
