@@ -11,6 +11,11 @@ const WS_URL = "ws://localhost:3000";
 
 dialogElms.dialogSubmitElm.disabled = true;
 
+const scrollDialogsToBottom = () => {
+    dialogElms.dialogDialogElm.scrollTop =
+        dialogElms.dialogDialogElm.scrollHeight;
+};
+
 dialogElms.dialogStartBtnElm.addEventListener("click", () => {
     const { username, userAvatarImageUrl } = appState;
 
@@ -47,8 +52,7 @@ dialogElms.dialogStartBtnElm.addEventListener("click", () => {
                 "beforeend",
                 botMessageTemplate
             );
-            dialogElms.dialogDialogElm.scrollTop =
-                dialogElms.dialogDialogElm.scrollHeight;
+            scrollDialogsToBottom();
             return;
         }
 
@@ -57,6 +61,7 @@ dialogElms.dialogStartBtnElm.addEventListener("click", () => {
                 "[data-message-content]"
             );
         botMessageContent.innerHTML = createBotMessageTextHTML(message);
+        scrollDialogsToBottom();
 
         dialogElms.dialogSubmitElm.disabled = false;
     };
@@ -79,8 +84,7 @@ dialogElms.dialogStartBtnElm.addEventListener("click", () => {
             "beforeend",
             userMessageTemplate
         );
-        dialogElms.dialogDialogElm.scrollTop =
-            dialogElms.dialogDialogElm.scrollHeight;
+        scrollDialogsToBottom();
 
         ws.send(JSON.stringify({ message: messageText }));
 
