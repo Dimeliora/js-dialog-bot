@@ -32,6 +32,7 @@ usernameElms.usernameFormElm.addEventListener("submit", (e) => {
     const username = usernameElms.usernameInputElm.value;
     if (username.trim().length === 0) {
         alertHandle("Необходимо ввести имя пользователя.");
+        usernameElms.usernameInputElm.focus();
         return;
     }
 

@@ -20,6 +20,11 @@ dialogElms.dialogStartBtnElm.addEventListener("click", () => {
     const { username, userAvatarImageUrl } = appState;
 
     dialogElms.greetingBlockElm.classList.add("greeting--hidden");
+    dialogElms.dialogBlockElm.classList.add("dialog--visible");
+
+    dialogElms.greetingBlockElm.addEventListener("transitionend", () => {
+        dialogElms.greetingBlockElm.style.setProperty("display", "none");
+    });
 
     const ws = new WebSocket(WS_URL);
 
