@@ -12,8 +12,8 @@ const WS_URL = "ws://localhost:3000";
 dialogElms.dialogSubmitElm.disabled = true;
 
 const scrollDialogsToBottom = () => {
-    dialogElms.dialogDialogElm.scrollTop =
-        dialogElms.dialogDialogElm.scrollHeight;
+    dialogElms.dialogMessagesElm.scrollTop =
+        dialogElms.dialogMessagesElm.scrollHeight;
 };
 
 dialogElms.dialogStartBtnElm.addEventListener("click", () => {
@@ -48,7 +48,7 @@ dialogElms.dialogStartBtnElm.addEventListener("click", () => {
 
         if (isPending) {
             const botMessageTemplate = createBotMessageHTML();
-            dialogElms.dialogDialogElm.insertAdjacentHTML(
+            dialogElms.dialogMessagesElm.insertAdjacentHTML(
                 "beforeend",
                 botMessageTemplate
             );
@@ -57,7 +57,7 @@ dialogElms.dialogStartBtnElm.addEventListener("click", () => {
         }
 
         const botMessageContent =
-            dialogElms.dialogDialogElm.lastElementChild.querySelector(
+            dialogElms.dialogMessagesElm.lastElementChild.querySelector(
                 "[data-message-content]"
             );
         botMessageContent.innerHTML = createBotMessageTextHTML(message);
@@ -80,7 +80,7 @@ dialogElms.dialogStartBtnElm.addEventListener("click", () => {
             messageText,
             userAvatarImageUrl
         );
-        dialogElms.dialogDialogElm.insertAdjacentHTML(
+        dialogElms.dialogMessagesElm.insertAdjacentHTML(
             "beforeend",
             userMessageTemplate
         );

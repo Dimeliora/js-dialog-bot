@@ -3,6 +3,10 @@
     align-items: flex-start;
     padding: 20px 0;
 
+    @media screen and (max-width: $sm) {
+        padding: 12px 0;
+    }
+
     &--user {
         flex-direction: row-reverse;
 
@@ -54,15 +58,24 @@
         padding: 20px 30px;
         border-radius: 10px;
         box-shadow: $shadow-for-white;
+
+        @media screen and (max-width: $sm) {
+            max-width: none;
+            padding: 10px 20px;
+        }
     }
 
     &__text {
         margin: 0;
-
         font-family: inherit;
         color: $black;
         font-size: 1.6rem;
         line-height: 1.8rem;
         white-space: normal;
+
+        @media screen and (max-width: $sm) {
+            font-size: 1.4rem;
+            line-height: 1.6rem;
+        }
     }
 }

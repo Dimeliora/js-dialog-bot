@@ -1,8 +1,67 @@
-<!DOCTYPE html><html lang="ru">    <head>        <meta charset="UTF-8">        <meta http-equiv="X-UA-Compatible" content="IE=edge">        <meta name="viewport" content="width=device-width, initial-scale=1.0">        <title>JS Dialog Bot</title>        <link rel="stylesheet" href="/styles.css">        <script src="/script.js" defer></script><link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>JS Dialog Bot</title>
+        <link rel="stylesheet" href="/styles.css">
+        <script src="/script.js" defer></script>
+<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
 <link rel="manifest" href="/icons/site.webmanifest">
 <link rel="shortcut icon" href="/icons/favicon.ico">
 <meta name="msapplication-TileColor" content="#da532c">
 <meta name="msapplication-config" content="/icons/browserconfig.xml">
-<meta name="theme-color" content="#ffffff"></head>    <body>        <div class="alert" data-alert-block></div>        <div class="container">            <div class="greeting" data-greeting-block>                <h1 class="greeting__heading">Добро пожаловать!</h1>                <p class="greeting__text">                    Перед началом диалога вы можете установить своё изображение                    в качестве аватара, кликнув на "+", а также указать свой                    никнейм, кликнув на имя пользователя под аватаром                </p>                <div class="greeting__avatar">                    <div class="greeting__avatar-wrapper">                        <img src="/images/avatar-user-default.webp" alt="Аватар пользователя" class="greeting__avatar-image" data-avatar-image>                    </div>                    <input type="file" style="display: none" data-avatar-file>                    <button class="greeting__avatar-change" title="Изменить аватар" aria-label="Изменить аватар" data-avatar-button>                        <svg class="greeting__avatar-icon">                            <use href="/icons/icon-sprite.svg#add"/>                        </svg>                    </button>                </div>                <div class="greeting__username">                    <div class="greeting__username-wrapper" data-username-block>                        <div class="greeting__username-value" tabindex="0" title="Изменить имя пользователя" aria-label="Изменить имя пользователя" data-username-value></div>                        <form class="greeting__form" data-username-form>                            <input type="text" class="greeting__form-input" placeholder="Имя пользователя" value="User" tabindex="-1" data-username-input>                            <button type="submit" class="greeting__form-submit button" tabindex="-1" data-username-submit>                                OK                            </button>                        </form>                    </div>                </div>                <button class="greeting__start button" data-dialog-start>                    Начать диалог                </button>            </div>            <div class="dialog">                <div class="dialog__dialog" data-dialog-dialog>                    <div class="dialog__start-time" data-dialog-start-time></div>                </div>                <form class="dialog__form" data-dialog-form>                    <textarea type="text" class="dialog__input" placeholder="Введите сообщение..." data-dialog-input></textarea>                    <button class="dialog__submit button" data-dialog-submit>                        Отправить                    </button>                </form>            </div>        </div>    </body></html>
+<meta name="theme-color" content="#ffffff"></head>
+    <body>
+        <div class="alert" data-alert-block></div>
+        <div class="container">
+            <div class="greeting" data-greeting-block>
+                <h1 class="greeting__heading">Добро пожаловать!</h1>
+                <p class="greeting__text">
+                    Перед началом диалога вы можете установить своё изображение
+                    в качестве аватара, кликнув на "+", а также указать свой
+                    никнейм, кликнув на имя пользователя под аватаром
+                </p>
+                <div class="greeting__avatar">
+                    <div class="greeting__avatar-wrapper">
+                        <img src="/images/avatar-user-default.webp" alt="Аватар пользователя" class="greeting__avatar-image" data-avatar-image>
+                    </div>
+                    <input type="file" style="display: none" data-avatar-file>
+                    <button class="greeting__avatar-change" title="Изменить аватар" aria-label="Изменить аватар" data-avatar-button>
+                        <svg class="greeting__avatar-icon">
+                            <use href="/icons/icon-sprite.svg#add"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="greeting__username">
+                    <div class="greeting__username-wrapper" data-username-block>
+                        <div class="greeting__username-value" tabindex="0" title="Изменить имя пользователя" aria-label="Изменить имя пользователя" data-username-value></div>
+                        <form class="greeting__form" data-username-form>
+                            <input type="text" class="greeting__form-input" placeholder="Имя пользователя" value="User" tabindex="-1" data-username-input>
+                            <button type="submit" class="greeting__form-submit button" tabindex="-1" data-username-submit>
+                                OK
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <button class="greeting__start button" data-dialog-start>
+                    Начать диалог
+                </button>
+            </div>
+            <div class="dialog">
+                <div class="dialog__messages" data-dialog-messages>
+                    <div class="dialog__start-time" data-dialog-start-time></div>
+                </div>
+                <form class="dialog__form" data-dialog-form>
+                    <textarea type="text" class="dialog__input" placeholder="Введите сообщение..." data-dialog-input></textarea>
+                    <button class="dialog__submit button" data-dialog-submit>
+                        Отправить
+                    </button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
