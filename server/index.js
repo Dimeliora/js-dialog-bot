@@ -1,6 +1,6 @@
 const { Server } = require("ws");
 
-const { delay } = require("./utlis/delay");
+const { delay } = require("./utils/delay");
 
 const PORT = process.env.PORT || 3000;
 
