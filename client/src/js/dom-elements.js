@@ -13,3 +13,14 @@ export const usernameElms = {
     usernameInputElm: document.querySelector("[data-username-input]"),
     usernameSubmitElm: document.querySelector("[data-username-submit]"),
 };
+
+// Dialog DOM Elements
+export const dialogElms = {
+    greetingBlockElm: document.querySelector("[data-greeting-block]"),
+    dialogStartBtnElm: document.querySelector("[data-dialog-start]"),
+    dialogStartTimeElm: document.querySelector("[data-dialog-start-time]"),
+    dialogDialogElm: document.querySelector("[data-dialog-dialog]"),
+    dialogFormElm: document.querySelector("[data-dialog-form]"),
+    dialogInputElm: document.querySelector("[data-dialog-input]"),
+    dialogSubmitElm: document.querySelector("[data-dialog-submit]"),
+};

@@ -89,9 +89,28 @@
                         </form>
                     </div>
                 </div>
-                <button class="greeting__start button" data-chat-start>
+                <button class="greeting__start button" data-dialog-start>
                     Начать диалог
                 </button>
+            </div>
+            <div class="dialog">
+                <div class="dialog__dialog" data-dialog-dialog>
+                    <div
+                        class="dialog__start-time"
+                        data-dialog-start-time
+                    ></div>
+                </div>
+                <form class="dialog__form" data-dialog-form>
+                    <textarea
+                        type="text"
+                        class="dialog__input"
+                        placeholder="Введите сообщение..."
+                        data-dialog-input
+                    ></textarea>
+                    <button class="dialog__submit button" data-dialog-submit>
+                        Отправить
+                    </button>
+                </form>
             </div>
         </div>
     </body>

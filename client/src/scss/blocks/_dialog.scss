@@ -1,0 +1,65 @@
+.dialog {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 30px 0;
+
+    &__dialog {
+        scroll-behavior: smooth;
+        flex-grow: 1;
+        padding: 0 20px;
+        overflow-y: auto;
+
+        &::-webkit-scrollbar {
+            width: 10px;
+            background-color: #f0f0f0;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            border-radius: 5px;
+            background-color: lighten($purple, 15%);
+
+            &:hover {
+                background-color: $purple;
+            }
+        }
+    }
+
+    &__start-time {
+        font-size: 1.4rem;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    &__form {
+        display: flex;
+        margin-top: 20px;
+    }
+
+    &__input {
+        flex-grow: 1;
+        height: 55px;
+        overflow: hidden;
+        margin-right: 30px;
+        padding: 18px 45px;
+        border: none;
+        border-radius: 20px;
+        box-shadow: $shadow-for-purple;
+        background-color: $purple;
+        color: $white;
+        font-family: inherit;
+        font-size: 1.6rem;
+        line-height: 1.8rem;
+        resize: none;
+        transition: background-color 0.2s ease-out;
+
+        &::placeholder {
+            color: $white;
+        }
+
+        &:focus {
+            outline: none;
+            background-color: lighten($purple, 10%);
+        }
+    }
+}
