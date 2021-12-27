@@ -1,0 +1,22 @@
+.button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 10px;
+    background-color: $purple;
+    color: $white;
+    font-family: inherit;
+    font-size: 1.6rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease-out, color 0.2s ease-out;
+
+    &:hover,
+    &:focus,
+    &:disabled {
+        background-color: lighten($purple, 10%);
+    }
+
+    &:disabled {
+        background-color: $gray;
+        cursor: not-allowed;
+    }
+}
