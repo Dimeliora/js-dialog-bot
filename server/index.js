@@ -1,10 +1,17 @@
+const path = require("path");
+const fs = require("fs");
 const { Server } = require("ws");
 
-const { answers, answersTemplate } = require("./utils/bot-dictionary");
 const { getRandomNumber } = require("./utils/get-random-number");
 const { delay } = require("./utils/delay");
 
 const PORT = process.env.PORT || 3000;
+
+const answersFilePath = path.resolve(__dirname, "data", "bot-answers.json");
+
+const answersData = fs.readFileSync(answersFilePath);
+answers = JSON.parse(answersData);
+answersTemplate = new RegExp(Object.keys(answers).join("|"), "i");
 
 const wss = new Server({ port: PORT });
 
