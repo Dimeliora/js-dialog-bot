@@ -25,7 +25,12 @@ dialogElms.dialogStartBtnElm.addEventListener("click", () => {
     ws.onmessage = (e) => {
         const { isPending, message } = JSON.parse(e.data);
 
-        console.log(isPending);
-        console.log(message);
+        if (!appState.isDialogStarted) {
+            const [hrs, mins] = new Date().toLocaleTimeString().split(":");
+
+            dialogElms.dialogStartTimeElm.textContent = `Сегодня в ${hrs}:${mins}`;
+
+            appState.isDialogStarted = true;
+        }
     };
 });
