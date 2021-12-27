@@ -1,34 +1,36 @@
-import { appState } from './app-state';
-import { usernameElms } from './dom-elements';
+import { appState } from "./app-state";
+import { usernameElms } from "./dom-elements";
+
+usernameElms.usernameValueElm.textContent = appState.username;
 
 const usernameChangeFormCallHandler = () => {
     usernameElms.usernameBlockElm.classList.add(
-        'greeting__username-wrapper--show-form'
+        "greeting__username-wrapper--show-form"
     );
 
-    usernameElms.usernameInputElm.removeAttribute('tabindex');
-    usernameElms.usernameSubmitElm.removeAttribute('tabindex');
+    usernameElms.usernameInputElm.removeAttribute("tabindex");
+    usernameElms.usernameSubmitElm.removeAttribute("tabindex");
 
     usernameElms.usernameInputElm.select();
 };
 
 usernameElms.usernameValueElm.addEventListener(
-    'click',
+    "click",
     usernameChangeFormCallHandler
 );
 
-usernameElms.usernameValueElm.addEventListener('keyup', (e) => {
-    if (e.key === 'Enter') {
+usernameElms.usernameValueElm.addEventListener("keyup", (e) => {
+    if (e.key === "Enter") {
         usernameChangeFormCallHandler();
     }
 });
 
-usernameElms.usernameFormElm.addEventListener('submit', (e) => {
+usernameElms.usernameFormElm.addEventListener("submit", (e) => {
     e.preventDefault();
 
     const username = usernameElms.usernameInputElm.value;
     if (username.trim().length === 0) {
-        alert('Необходимо ввести имя пользователя.');
+        alert("Необходимо ввести имя пользователя.");
         return;
     }
 
@@ -36,9 +38,9 @@ usernameElms.usernameFormElm.addEventListener('submit', (e) => {
     usernameElms.usernameValueElm.textContent = username;
 
     usernameElms.usernameBlockElm.classList.remove(
-        'greeting__username-wrapper--show-form'
+        "greeting__username-wrapper--show-form"
     );
 
-    usernameElms.usernameInputElm.setAttribute('tabindex', '-1');
-    usernameElms.usernameSubmitElm.setAttribute('tabindex', '-1');
+    usernameElms.usernameInputElm.setAttribute("tabindex", "-1");
+    usernameElms.usernameSubmitElm.setAttribute("tabindex", "-1");
 });
