@@ -72,22 +72,9 @@
         right: 5px;
         bottom: 0;
         z-index: 100;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 40px;
-        height: 40px;
-        padding: 0;
-        border: none;
-        border-radius: 50%;
+        width: 35px;
+        height: 35px;
         background-color: $purple;
-        cursor: pointer;
-        transition: background-color 0.2s ease-out;
-
-        &:hover,
-        &:focus {
-            background-color: lighten($purple, 10%);
-        }
     }
 
     &__avatar-icon {
@@ -126,6 +113,10 @@
         &:hover,
         &:focus {
             transform: scale(1.1);
+
+            @media screen and (max-width: $sm) {
+                transform: none;
+            }
         }
 
         &:focus {
@@ -154,6 +145,11 @@
             outline: none;
             border-color: $purple;
             box-shadow: 0 0 8px lighten($purple, 15%);
+
+            @media screen and (max-width: $sm) {
+                border-color: $black;
+                box-shadow: none;
+            }
         }
     }
 

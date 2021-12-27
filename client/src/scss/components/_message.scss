@@ -31,6 +31,11 @@
         align-items: center;
         max-width: 100px;
         margin-right: 20px;
+        
+        @media screen and (max-width: $sm) {
+            max-width: 70px;
+            margin-right: 15px;
+        }
     }
 
     &__avatar {
@@ -39,6 +44,11 @@
         margin-bottom: 10px;
         border-radius: 50%;
         overflow: hidden;
+
+        @media screen and (max-width: $sm) {
+            width: 30px;
+            height: 30px;
+        }
     }
 
     &__avatar-image {
@@ -51,6 +61,10 @@
     &__username {
         font-size: 1.6rem;
         font-weight: 700;
+
+        @media screen and (max-width: $sm) {
+            font-size: 1.4rem;
+        }
     }
 
     &__content {

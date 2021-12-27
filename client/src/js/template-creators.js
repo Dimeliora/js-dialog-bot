@@ -11,7 +11,7 @@ export const createBotMessageHTML = () => `
                     class="message__avatar-image"
                 />
             </div>
-            <div class="message__username">Бот</div>
+            <div class="message__username">Оракул</div>
         </div>
         <div class="message__content" data-message-content>
             <div class="preloader">

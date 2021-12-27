@@ -13,10 +13,13 @@
     &:focus,
     &:disabled {
         background-color: lighten($purple, 10%);
+
+        @media screen and (max-width: $sm) {
+            background-color: $purple;
+        }
     }
 
     &:disabled {
-        background-color: $gray;
         cursor: not-allowed;
     }
 }
