@@ -34,8 +34,6 @@ wss.on("connection", (ws) => {
             }
         }
 
-        // Задержка 1-3 сек. перед началом ответа
-        await delay(getRandomNumber(1000, 3000));
         ws.send(JSON.stringify({ isPending: true }));
 
         // Задержка 2-4 сек. перед ответом (время отображения preloader'а)
