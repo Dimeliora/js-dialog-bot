@@ -29,8 +29,8 @@ usernameElms.usernameValueElm.addEventListener("keyup", (e) => {
 usernameElms.usernameFormElm.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const username = usernameElms.usernameInputElm.value;
-    if (username.trim().length === 0) {
+    const username = usernameElms.usernameInputElm.value.trim();
+    if (username.length === 0) {
         alertHandle("Необходимо ввести имя пользователя.");
         usernameElms.usernameInputElm.focus();
         return;
