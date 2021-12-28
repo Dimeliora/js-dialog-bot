@@ -22,7 +22,7 @@ wss.on("connection", (ws) => {
     }, WS_KEEPALIVE_PERIOD);
 
     ws.on("message", async (data) => {
-        const { username, message, keepAlive } = JSON.parse(data);
+        const { username, message } = JSON.parse(data);
 
         let answerMessage = "Не понимаю тебя. Переформулируй вопрос.";
         if (username !== undefined) {
