@@ -6,6 +6,7 @@ const { getRandomNumber } = require("./utils/get-random-number");
 const { delay } = require("./utils/delay");
 
 const PORT = process.env.PORT || 3000;
+const WS_KEEPALIVE_PERIOD = 20000;
 
 const answersFilePath = path.resolve(__dirname, "data", "bot-answers.json");
 
@@ -16,8 +17,12 @@ answersTemplate = new RegExp(Object.keys(answers).join("|"), "i");
 const wss = new Server({ port: PORT });
 
 wss.on("connection", (ws) => {
+    setInterval(() => {
+        ws.send(JSON.stringify({ keepAlive: true }));
+    }, WS_KEEPALIVE_PERIOD);
+
     ws.on("message", async (data) => {
-        const { username, message } = JSON.parse(data);
+        const { username, message, keepAlive } = JSON.parse(data);
 
         let answerMessage = "Не понимаю тебя. Переформулируй вопрос.";
         if (username !== undefined) {

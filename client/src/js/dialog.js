@@ -51,7 +51,11 @@ dialogElms.dialogStartBtnElm.addEventListener("click", () => {
     };
 
     ws.onmessage = (e) => {
-        const { isPending, message } = JSON.parse(e.data);
+        const { isPending, message, keepAlive } = JSON.parse(e.data);
+
+        if (keepAlive) {
+            return;
+        }
 
         if (isPending) {
             const botMessageTemplate = createBotMessageHTML();
@@ -61,7 +65,6 @@ dialogElms.dialogStartBtnElm.addEventListener("click", () => {
             );
 
             scrollDialogsToBottom();
-
             return;
         }
 
