@@ -78,10 +78,7 @@ dialogElms.dialogStartBtnElm.addEventListener("click", () => {
                 "[data-message-content]"
             );
         botMessageContent.innerHTML = createBotMessageTextHTML(message);
-        botMessageContent.scrollIntoView({
-            block: "start",
-            behavior: "smooth",
-        });
+        botMessageContent.scrollIntoView();
     };
 
     dialogElms.dialogInputElm.addEventListener("input", ({ target }) => {
