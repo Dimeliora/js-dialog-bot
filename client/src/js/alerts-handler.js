@@ -11,11 +11,16 @@ export const alertHandle = (message) => {
 
     const alertElm = alertElms.alertBlocknElm.querySelector(`#${alertId}`);
 
-    setTimeout(() => {
+    const alertTimerId = setTimeout(() => {
         alertElm.style.opacity = 0;
-
-        alertElm.addEventListener("transitionend", () => {
-            alertElm.remove();
-        });
     }, 5000);
+
+    alertElm.addEventListener("transitionend", () => {
+        alertElm.remove();
+    });
+
+    alertElm.addEventListener("click", () => {
+        clearTimeout(alertTimerId);
+        alertElm.remove();
+    });
 };
