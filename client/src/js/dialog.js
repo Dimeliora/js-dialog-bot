@@ -7,7 +7,7 @@ import {
 } from "./template-creators";
 import { alertHandle } from "./alerts-handler";
 
-const WS_URL = "wss://js-dialog-bot-api.herokuapp.com";
+const WS_URL = "ws://localhost:3000";
 
 const enableSendButton = () => {
     dialogElms.dialogSubmitElm.classList.remove("dialog__submit--hidden");
