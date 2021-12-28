@@ -1,21 +1,21 @@
-import { appState } from './app-state';
-import { dialogElms } from './dom-elements';
+import { appState } from "./app-state";
+import { dialogElms } from "./dom-elements";
 import {
     createBotMessageHTML,
     createBotMessageTextHTML,
     createUserMessageHTML,
-} from './template-creators';
-import { alertHandle } from './alerts-handler';
+} from "./template-creators";
+import { alertHandle } from "./alerts-handler";
 
-const WS_URL = 'ws://localhost:3000';
+const WS_URL = "ws://localhost:3000";
 
 const enableSendButton = () => {
-    dialogElms.dialogSubmitElm.classList.remove('dialog__submit--hidden');
+    dialogElms.dialogSubmitElm.classList.remove("dialog__submit--hidden");
     dialogElms.dialogSubmitElm.disabled = false;
 };
 
 const disableSendButton = () => {
-    dialogElms.dialogSubmitElm.classList.add('dialog__submit--hidden');
+    dialogElms.dialogSubmitElm.classList.add("dialog__submit--hidden");
     dialogElms.dialogSubmitElm.disabled = true;
 };
 
@@ -26,14 +26,14 @@ const scrollDialogsToBottom = () => {
 
 disableSendButton();
 
-dialogElms.dialogStartBtnElm.addEventListener('click', () => {
+dialogElms.dialogStartBtnElm.addEventListener("click", () => {
     const { username, userAvatarImageUrl } = appState;
 
-    dialogElms.greetingBlockElm.classList.add('greeting--hidden');
-    dialogElms.dialogBlockElm.classList.add('dialog--visible');
+    dialogElms.greetingBlockElm.classList.add("greeting--hidden");
+    dialogElms.dialogBlockElm.classList.add("dialog--visible");
 
-    dialogElms.greetingBlockElm.addEventListener('transitionend', () => {
-        dialogElms.greetingBlockElm.style.setProperty('display', 'none');
+    dialogElms.greetingBlockElm.addEventListener("transitionend", () => {
+        dialogElms.greetingBlockElm.style.setProperty("display", "none");
     });
 
     const ws = new WebSocket(WS_URL);
@@ -43,11 +43,11 @@ dialogElms.dialogStartBtnElm.addEventListener('click', () => {
     };
 
     ws.onerror = () => {
-        alertHandle('Произошла ошибка соединения. Попробуйте ещё раз позже.');
+        alertHandle("Произошла ошибка соединения. Попробуйте ещё раз позже.");
     };
 
     ws.onclose = () => {
-        alertHandle('Соединение было разорвано. Попробуйте ещё раз позже.');
+        alertHandle("Соединение было разорвано. Попробуйте ещё раз позже.");
     };
 
     ws.onmessage = (e) => {
@@ -56,7 +56,7 @@ dialogElms.dialogStartBtnElm.addEventListener('click', () => {
         if (isPending) {
             const botMessageTemplate = createBotMessageHTML();
             dialogElms.dialogMessagesElm.insertAdjacentHTML(
-                'beforeend',
+                "beforeend",
                 botMessageTemplate
             );
 
@@ -66,7 +66,7 @@ dialogElms.dialogStartBtnElm.addEventListener('click', () => {
         }
 
         if (!appState.isDialogStarted) {
-            const [hrs, mins] = new Date().toLocaleTimeString().split(':');
+            const [hrs, mins] = new Date().toLocaleTimeString().split(":");
 
             dialogElms.dialogStartTimeElm.textContent = `Сегодня в ${hrs}:${mins}`;
 
@@ -75,14 +75,16 @@ dialogElms.dialogStartBtnElm.addEventListener('click', () => {
 
         const botMessageContent =
             dialogElms.dialogMessagesElm.lastElementChild.querySelector(
-                '[data-message-content]'
+                "[data-message-content]"
             );
         botMessageContent.innerHTML = createBotMessageTextHTML(message);
-
-        scrollDialogsToBottom();
+        botMessageContent.scrollIntoView({
+            block: "start",
+            behavior: "smooth",
+        });
     };
 
-    dialogElms.dialogInputElm.addEventListener('input', ({ target }) => {
+    dialogElms.dialogInputElm.addEventListener("input", ({ target }) => {
         if (target.value.trim().length > 0) {
             enableSendButton();
         } else {
@@ -90,12 +92,12 @@ dialogElms.dialogStartBtnElm.addEventListener('click', () => {
         }
     });
 
-    dialogElms.dialogFormElm.addEventListener('submit', (e) => {
+    dialogElms.dialogFormElm.addEventListener("submit", (e) => {
         e.preventDefault();
 
         const messageText = dialogElms.dialogInputElm.value;
         if (messageText.trim().length === 0) {
-            alertHandle('Сообщение не может быть пустым.');
+            alertHandle("Сообщение не может быть пустым.");
             return;
         }
 
@@ -105,7 +107,7 @@ dialogElms.dialogStartBtnElm.addEventListener('click', () => {
             userAvatarImageUrl
         );
         dialogElms.dialogMessagesElm.insertAdjacentHTML(
-            'beforeend',
+            "beforeend",
             userMessageTemplate
         );
 
@@ -113,7 +115,7 @@ dialogElms.dialogStartBtnElm.addEventListener('click', () => {
 
         ws.send(JSON.stringify({ message: messageText }));
 
-        dialogElms.dialogInputElm.value = '';
+        dialogElms.dialogInputElm.value = "";
         dialogElms.dialogInputElm.focus();
 
         disableSendButton();
