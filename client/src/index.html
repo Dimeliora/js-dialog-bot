@@ -108,21 +108,21 @@
                         placeholder="Введите сообщение..."
                         data-dialog-input
                     ></textarea>
-                    <button
-                        class="
-                            dialog__submit dialog__submit--hidden
-                            icon-button
-                        "
-                        title="Отправить сообщение"
-                        aria-label="Отправить сообщение"
-                        data-dialog-submit
-                    >
-                        <svg
-                            class="icon-button__icon"
+                    <div class="dialog__submit-wrapper">
+                        <button
+                            class="
+                                dialog__submit dialog__submit--hidden
+                                icon-button
+                            "
+                            title="Отправить сообщение"
+                            aria-label="Отправить сообщение"
+                            data-dialog-submit
                         >
-                            <use href="/icons/icon-sprite.svg#send" />
-                        </svg>
-                    </button>
+                            <svg class="icon-button__icon">
+                                <use href="/icons/icon-sprite.svg#send" />
+                            </svg>
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
