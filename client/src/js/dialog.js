@@ -1,28 +1,13 @@
 import { appState } from "./app-state";
 import { dialogElms } from "./dom-elements";
+import { webSocketsHandler } from "./websockets-handler";
 import {
-    createBotMessageHTML,
-    createBotMessageTextHTML,
-    createUserMessageHTML,
-} from "./template-creators";
+    enableSendButton,
+    disableSendButton,
+    scrollDialogsToBottom,
+} from "./dialog-dom-helpers";
+import { createUserMessageHTML } from "./template-creators";
 import { alertHandle } from "./alerts-handler";
-
-const WS_URL = "ws://localhost:3000";
-
-const enableSendButton = () => {
-    dialogElms.dialogSubmitElm.classList.remove("dialog__submit--hidden");
-    dialogElms.dialogSubmitElm.disabled = false;
-};
-
-const disableSendButton = () => {
-    dialogElms.dialogSubmitElm.classList.add("dialog__submit--hidden");
-    dialogElms.dialogSubmitElm.disabled = true;
-};
-
-const scrollDialogsToBottom = () => {
-    dialogElms.dialogMessagesElm.scrollTop =
-        dialogElms.dialogMessagesElm.scrollHeight;
-};
 
 disableSendButton();
 
@@ -35,56 +20,7 @@ dialogElms.dialogStartBtnElm.addEventListener("click", () => {
         dialogElms.greetingBlockElm.style.setProperty("display", "none");
     });
 
-    const ws = new WebSocket(WS_URL);
-
-    ws.onopen = () => {
-        dialogElms.dialogSpinnerElm.classList.add("dialog__spinner--hidden");
-        dialogElms.dialogBlockElm.classList.add("dialog__wrapper--visible");
-
-        ws.send(JSON.stringify({ username }));
-    };
-
-    ws.onerror = () => {
-        alertHandle("Произошла ошибка соединения. Попробуйте ещё раз позже.");
-    };
-
-    ws.onclose = () => {
-        alertHandle("Соединение было разорвано. Попробуйте ещё раз позже.");
-    };
-
-    ws.onmessage = (e) => {
-        const { isPending, message, keepAlive } = JSON.parse(e.data);
-
-        if (keepAlive) {
-            return;
-        }
-
-        if (isPending) {
-            const botMessageTemplate = createBotMessageHTML();
-            dialogElms.dialogMessagesElm.insertAdjacentHTML(
-                "beforeend",
-                botMessageTemplate
-            );
-
-            scrollDialogsToBottom();
-            return;
-        }
-
-        if (!appState.isDialogStarted) {
-            const [hrs, mins] = new Date().toLocaleTimeString().split(":");
-
-            dialogElms.dialogStartTimeElm.textContent = `Сегодня в ${hrs}:${mins}`;
-
-            appState.isDialogStarted = true;
-        }
-
-        const botMessageContent =
-            dialogElms.dialogMessagesElm.lastElementChild.querySelector(
-                "[data-message-content]"
-            );
-        botMessageContent.innerHTML = createBotMessageTextHTML(message);
-        botMessageContent.scrollIntoView();
-    };
+    const ws = webSocketsHandler();
 
     dialogElms.dialogInputElm.addEventListener("input", ({ target }) => {
         if (target.value.trim().length > 0) {
