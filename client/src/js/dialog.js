@@ -30,6 +30,14 @@ dialogElms.dialogStartBtnElm.addEventListener("click", () => {
         }
     });
 
+    dialogElms.dialogInputElm.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" && !e.shiftKey) {
+            e.preventDefault();
+
+            dialogElms.dialogSubmitElm.click();
+        }
+    });
+
     dialogElms.dialogFormElm.addEventListener("submit", (e) => {
         e.preventDefault();
 
