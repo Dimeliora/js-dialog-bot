@@ -8,6 +8,7 @@ import {
 } from "./dialog-dom-helpers";
 import { createUserMessageHTML } from "./template-creators";
 import { alertHandle } from "./alerts-handler";
+import { isMobile } from "./is-mobile-detection";
 
 disableSendButton();
 
@@ -31,7 +32,7 @@ dialogElms.dialogStartBtnElm.addEventListener("click", () => {
     });
 
     dialogElms.dialogInputElm.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" && !e.shiftKey) {
+        if (e.key === "Enter" && !e.shiftKey && !isMobile) {
             e.preventDefault();
 
             dialogElms.dialogSubmitElm.click();
