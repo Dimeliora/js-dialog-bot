@@ -30,7 +30,6 @@ dialogElms.dialogStartBtnElm.addEventListener("click", () => {
     const { username, userAvatarImageUrl } = appState;
 
     dialogElms.greetingBlockElm.classList.add("greeting--hidden");
-    dialogElms.dialogBlockElm.classList.add("dialog--visible");
 
     dialogElms.greetingBlockElm.addEventListener("transitionend", () => {
         dialogElms.greetingBlockElm.style.setProperty("display", "none");
@@ -39,6 +38,9 @@ dialogElms.dialogStartBtnElm.addEventListener("click", () => {
     const ws = new WebSocket(WS_URL);
 
     ws.onopen = () => {
+        dialogElms.dialogSpinnerElm.classList.add("dialog__spinner--hidden");
+        dialogElms.dialogBlockElm.classList.add("dialog__wrapper--visible");
+
         ws.send(JSON.stringify({ username }));
     };
 

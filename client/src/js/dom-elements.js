@@ -18,6 +18,7 @@ export const usernameElms = {
 export const dialogElms = {
     greetingBlockElm: document.querySelector("[data-greeting-block]"),
     dialogBlockElm: document.querySelector("[data-dialog-block]"),
+    dialogSpinnerElm: document.querySelector("[data-dialog-spinner]"),
     dialogStartBtnElm: document.querySelector("[data-dialog-start]"),
     dialogStartTimeElm: document.querySelector("[data-dialog-start-time]"),
     dialogMessagesElm: document.querySelector("[data-dialog-messages]"),
