@@ -28,12 +28,9 @@ li {
     padding: 0;
 }
 
-a,
-button {
-    &:focus,
-    &:focus-within {
-        outline: none;
-    }
+a:focus,
+button:focus {
+    outline: none;
 }
 
 .container {
