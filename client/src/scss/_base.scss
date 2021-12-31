@@ -13,7 +13,7 @@ body {
     margin: 0;
     background-color: #fff;
     color: $black;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 1.4rem;
 }
 
@@ -41,4 +41,12 @@ button {
     height: 100%;
     margin: 0 auto;
     padding: 20px;
+}
+
+[hidden] {
+    position: absolute;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
 }

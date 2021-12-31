@@ -45,13 +45,14 @@
                             class="greeting__username-value"
                             tabindex="0"
                             title="Изменить имя пользователя"
-                            aria-label="Изменить имя пользователя"
                             data-username-value
                         ></div>
                         <form class="greeting__form" data-username-form>
+                            <label for="username-input" hidden></label>
                             <input
                                 type="text"
                                 class="greeting__form-input"
+                                id="username-input"
                                 placeholder="Имя пользователя"
                                 value="User"
                                 tabindex="-1"
@@ -84,9 +85,10 @@
                         ></div>
                     </div>
                     <form class="dialog__form" data-dialog-form>
+                        <label for="message-input" hidden>Message</label>
                         <textarea
-                            type="text"
                             class="dialog__input"
+                            id="message-input"
                             placeholder="Введите сообщение..."
                             data-dialog-input
                         ></textarea>
